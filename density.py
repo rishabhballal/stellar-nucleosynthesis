@@ -1,5 +1,3 @@
-import numpy as np
-
 def density_matrix(a):
     dens = 0*a
     for i in range(1, len(a)-1):
@@ -8,6 +6,8 @@ def density_matrix(a):
     return dens
 
 # TEST SECTION
+#
+# import numpy as np
 #
 # dim = 20
 # bound = 2
