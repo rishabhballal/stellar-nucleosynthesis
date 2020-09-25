@@ -1,4 +1,3 @@
-import time
 import numpy as np
 from eff_loop import iter_range
 
@@ -14,21 +13,21 @@ def centre_of_mass(a):
     for i in range(h[0], h[1]):
         for j in range(v[0], v[1]):
             cm_h[i] += j*a[i, j]
-        cm_h[i] //= sum(a[:, i])
+        cm_h[i] /= sum(a[:, i])
 
     cm_v = np.zeros(len(a))
     for i in range(v[0], v[1]):
         for j in range(h[0], h[1]):
             cm_v[i] += j*a[i, j]
-        cm_v[i] //= sum(a[i])
+        cm_v[i] /= sum(a[i])
 
     for i in range(len(a)):
         cm[0] += i*cm_h[i]
         cm[1] += i*cm_v[i]
-    cm[0] //= sum(cm_h)
-    cm[1] //= sum(cm_v)
+    cm[0] /= sum(cm_h)
+    cm[1] /= sum(cm_v)
 
-    return cm
+    return np.round(cm)
 
 # TEST SECTION
 #
