@@ -1,9 +1,11 @@
+import numpy as np
 
 def density_matrix(a):
     dens = 0*a
     for i in range(1, len(a)-1):
         for j in range(1, len(a)-1):
-            pass
+            dens[i, j] = round(sum(sum(a[i-1:i+2, j-1:j+2]))/9, 2)
+    return dens
 
 # TEST SECTION
 #
@@ -18,6 +20,6 @@ def density_matrix(a):
 #         if z[i, j]:
 #             n[i, j] = np.round(np.random.rand(1))
 # a = z + n
-# # print(a)
+# print(a)
 #
 # print(density_matrix(a))
