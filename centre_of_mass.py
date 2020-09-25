@@ -31,7 +31,7 @@ def centre_of_mass(a):
     return cm
 
 # TEST SECTION
-# 
+#
 # dim = 20
 # bound = 2
 #
@@ -43,6 +43,6 @@ def centre_of_mass(a):
 #         if z[i, j]:
 #             n[i, j] = np.round(np.random.rand(1))
 # a = z + n
-# # print(a)
+# print(a)
 #
 # print(centre_of_mass(a))
