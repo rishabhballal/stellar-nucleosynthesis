@@ -7,16 +7,6 @@ import nuclear as ncl
 
 mag = lambda vec: np.sqrt(np.inner(vec, vec))
 
-def density(a):
-    dens = 0 * a
-    for i in range(1, p-1):
-        for j in range(1, q-1):
-            dens[i, j] = (a[i-1, j-1] + a[i-1, j] + a[i-1, j+1]
-                          + a[i, j-1] + a[i, j] + a[i, j+1]
-                          + a[i+1, j-1] + a[i+1, j] + a[i+1, j+1])/9
-            dens[i, j] = np.round(dens[i, j], 2)
-    return dens
-
 def positions(a):
     ind = np.zeros(2, dtype=int)
     for i in range(p):
@@ -28,16 +18,16 @@ def positions(a):
 def gravity(a, ind):
     grav = np.zeros(2)
     for i in ind:
-            f = np.zeros(2)
-            for j in range(p):
-                for k in range(q):
-                    if(i[0] != j and i[1] != k):
-                        pos1 = np.array([i[0], i[1]])
-                        pos2 = np.array([j, k])
-                        rvec = pos2 - pos1
-                        f += (a[i[0], i[1]]*a[j, k]
-                              *rvec/mag(rvec)**3)
-            grav = np.vstack((grav, f))
+        f = np.zeros(2)
+        for j in range(p):
+            for k in range(q):
+                if(i[0] != j and i[1] != k):
+                    pos1 = np.array([i[0], i[1]])
+                    pos2 = np.array([j, k])
+                    rvec = pos2 - pos1
+                    f += (a[i[0], i[1]]*a[j, k]
+                          *rvec/mag(rvec)**3)
+        grav = np.vstack((grav, f))
     grav = grav[1:]
     for i in grav:
         norm = abs(i[0]) + abs(i[1])
