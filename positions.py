@@ -1,6 +1,6 @@
 import numpy as np
 
-def positions(a):
+def particle_positions(a):
     pos = np.array([0, 0], dtype=int)
 
     for i in range(len(a)):
