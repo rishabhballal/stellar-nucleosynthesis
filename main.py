@@ -3,17 +3,11 @@ import matplotlib.pyplot as plt
 from mpl_toolkits.mplot3d import axes3d
 
 from centre_of_mass import centre_of_mass
+from density import density_matrix
+from positions import particle_positions
 import nuclear as ncl
 
 mag = lambda vec: np.sqrt(np.inner(vec, vec))
-
-def positions(a):
-    ind = np.zeros(2, dtype=int)
-    for i in range(p):
-        for j in range(q):
-            if(a[i, j] != 0):
-                ind = np.vstack((ind, np.array([i, j])))
-    return ind[1:]
 
 def gravity(a, ind):
     grav = np.zeros(2)
