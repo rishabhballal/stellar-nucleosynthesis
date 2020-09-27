@@ -1,3 +1,7 @@
+import numpy as np
+import matplotlib.pyplot as plt
+from mpl_toolkits.mplot3d import axes3d
+
 def density_matrix(a):
     dens = 0*a
 
@@ -7,9 +11,17 @@ def density_matrix(a):
 
     return dens
 
+def density_plot(dens):
+    u = v = np.arange(0, len(dens), dtype=float)
+    x, y = np.meshgrid(u, v)
+
+    fig = plt.figure()
+    ax = fig.add_subplot(111, projection='3d')
+    ax.plot_surface(x, y, density_matrix(a))
+    ax.set_zlim(0, )
+    plt.show()
+
 # TEST SECTION
-#
-# import numpy as np
 #
 # dim = 20
 # bound = 2
@@ -24,4 +36,6 @@ def density_matrix(a):
 # a = z + n
 # print(a)
 #
-# print(density_matrix(a))
+# dens = density_matrix(a)
+# print(dens)
+# density_plot(dens)
