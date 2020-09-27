@@ -3,7 +3,7 @@ import matplotlib.pyplot as plt
 from mpl_toolkits.mplot3d import axes3d
 
 from centre_of_mass import centre_of_mass
-from density import density_matrix
+from density import density_matrix, density_plot
 from positions import particle_positions
 import nuclear as ncl
 
@@ -237,11 +237,7 @@ print('\nmass: %d' %m)
 print('number of elements: %d' %num)
 print('average element mass: %.2f' %avgm)
 
-fig = plt.figure()
-ax = fig.add_subplot(111, projection='3d')
-ax.plot_surface(x, y, density(a))
-ax.set_zlim(0, 4)
-plt.show()
+density_plot(density_matrix(a))
 
 t = 0
 # time = np.arange(21)
@@ -309,11 +305,7 @@ print('\nmass: %d' %m)
 print('number of elements: %d' %num)
 print('average element mass: %.2f' %avgm)
 
-fig = plt.figure()
-ax = fig.add_subplot(111, projection='3d')
-ax.plot_surface(x, y, density(a))
-ax.set_zlim(0,)
-plt.show()
+density_plot(density_matrix(a))
 
 fig, ax = plt.subplots()
 ax.plot(time, ca[:, 0], label='hydrogen')
