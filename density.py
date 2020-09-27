@@ -2,7 +2,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 from mpl_toolkits.mplot3d import axes3d
 
-def density_matrix(a):
+def matrix(a):
     dens = 0*a
 
     for i in range(1, len(a)-1):
@@ -11,7 +11,7 @@ def density_matrix(a):
 
     return dens
 
-def density_plot(dens):
+def plot(dens):
     u = v = np.arange(0, len(dens), dtype=float)
     x, y = np.meshgrid(u, v)
 
@@ -21,7 +21,12 @@ def density_plot(dens):
     ax.set_zlim(0, )
     plt.show()
 
+def profile(dens, cm):
+    pass
+
 # TEST SECTION
+# 
+# from centre_of_mass import centre_of_mass
 #
 # dim = 20
 # bound = 2
@@ -36,6 +41,9 @@ def density_plot(dens):
 # a = z + n
 # print(a)
 #
-# dens = density_matrix(a)
+# dens = matrix(a)
 # print(dens)
-# density_plot(dens)
+# plot(dens)
+#
+# cm = centre_of_mass(a)
+# profile(dens, cm)
