@@ -11,19 +11,19 @@ def centre_of_mass(a, pos):
     return np.round(cm)
 
 # TEST SECTION
-
-dim = 20
-bound = 2
-
-z = np.zeros((dim, dim))
-n = np.zeros((dim, dim))
-for i in range(bound, dim-bound):
-    for j in range(bound, dim-bound):
-        z[i, j] = np.random.randint(2)
-        if z[i, j]:
-            n[i, j] = np.random.randint(2)
-a = z + n
-print(a)
-
-pos = particle_positions(a)
-print(centre_of_mass(a, pos))
+#
+# dim = 20
+# bound = 2
+#
+# z = np.zeros((dim, dim))
+# n = np.zeros((dim, dim))
+# for i in range(bound, dim-bound):
+#     for j in range(bound, dim-bound):
+#         z[i, j] = np.random.randint(2)
+#         if z[i, j]:
+#             n[i, j] = np.random.randint(2)
+# a = z + n
+# print(a)
+#
+# pos = particle_positions(a)
+# print(centre_of_mass(a, pos))

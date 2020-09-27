@@ -19,9 +19,9 @@ def particle_positions(a):
 # n = np.zeros((dim, dim))
 # for i in range(bound, dim-bound):
 #     for j in range(bound, dim-bound):
-#         z[i, j] = np.round(np.random.rand(1))
+#         z[i, j] = np.random.randint(2)
 #         if z[i, j]:
-#             n[i, j] = np.round(np.random.rand(1))
+#             n[i, j] = np.random.randint(2)
 # a = z + n
 # print(a)
 #
