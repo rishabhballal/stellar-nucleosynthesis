@@ -1,5 +1,4 @@
 import numpy as np
-from positions import particle_positions
 
 def centre_of_mass(a, pos):
     cm = np.array([0, 0], dtype=float)
@@ -12,6 +11,8 @@ def centre_of_mass(a, pos):
 
 # TEST SECTION
 #
+# from positions import particle_positions
+# 
 # dim = 20
 # bound = 2
 #
