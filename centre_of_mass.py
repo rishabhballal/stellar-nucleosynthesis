@@ -6,13 +6,14 @@ def centre_of_mass(a, pos):
     for i in pos:
         cm += i*a[i[0], i[1]]
     cm /= sum(sum(a))
+    cm = np.round(cm)
 
-    return np.round(cm)
+    return np.array([cm[0], cm[1]], dtype=int)
 
 # TEST SECTION
 #
 # from positions import particle_positions
-# 
+#
 # dim = 20
 # bound = 2
 #
