@@ -22,16 +22,18 @@ def plot(dens):
     plt.show()
 
 def profile(dens, cm):
-    r = int(len(dens)/2)
-    print(len(dens), cm, r)
-    if r <= cm[0]:
-        prof1 = dens[cm[0] - r:cm[0], cm[1]]
-    else:
-        prof1 = dens[0:cm[0], cm[1]]
-    prof2 = dens[cm[0] + 1:cm[0] + r, cm[1]]
-    prof3 = dens[cm[0], cm[1] - r:cm[1]]
-    prof4 = dens[cm[0], cm[1] + 1:cm[1] + r]
+    print(cm)
+    prof1 = dens[cm[0], cm[1]:len(dens)]
+    prof2 = dens[cm[0]:len(dens), cm[1]]
+    prof3 = dens[cm[0], cm[1]:0:-1]
+    prof4 = dens[cm[0]:0:-1, cm[1]]
     print(prof1, prof2, prof3, prof4)
+
+    # r = np.arange(len(prof1))
+    # fig, ax = plt.subplots(figsize=(8, 6))
+    # ax.plot(r, prof1)
+    # ax.grid()
+    # plt.show()
 
 # TEST SECTION
 
@@ -49,7 +51,7 @@ for i in range(bound, dim-bound):
         if z[i, j]:
             n[i, j] = np.random.randint(2)
 a = z + n
-print(a)
+# print(a)
 
 dens = matrix(a)
 print(dens)
