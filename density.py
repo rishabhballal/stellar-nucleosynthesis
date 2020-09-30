@@ -22,41 +22,52 @@ def plot(dens):
     plt.show()
 
 def profile(dens, cm):
-    print(cm)
     prof1 = dens[cm[0], cm[1]:len(dens)]
     prof2 = dens[cm[0]:len(dens), cm[1]]
     prof3 = dens[cm[0], cm[1]:0:-1]
     prof4 = dens[cm[0]:0:-1, cm[1]]
-    print(prof1, prof2, prof3, prof4)
 
-    # r = np.arange(len(prof1))
-    # fig, ax = plt.subplots(figsize=(8, 6))
-    # ax.plot(r, prof1)
-    # ax.grid()
-    # plt.show()
+    maxim = max(cm) if len(dens)/2 < max(cm) else len(dens) - min(cm)
+
+    def normalise_length(arr, lim):
+        while len(arr) < lim:
+            arr = np.append(arr, 0)
+        return arr
+
+    prof1 = normalise_length(prof1, maxim)
+    prof2 = normalise_length(prof2, maxim)
+    prof3 = normalise_length(prof3, maxim)
+    prof4 = normalise_length(prof4, maxim)
+
+    prof = (prof1 + prof2 + prof3 + prof4)/4
+
+    r = np.arange(maxim)
+    fig, ax = plt.subplots(figsize=(8, 6))
+    ax.plot(r, prof)
+    ax.grid()
+    plt.show()
 
 # TEST SECTION
-
-from centre_of_mass import centre_of_mass
-from positions import particle_positions
-
-dim = 10
-bound = 2
-
-z = np.zeros((dim, dim))
-n = np.zeros((dim, dim))
-for i in range(bound, dim-bound):
-    for j in range(bound, dim-bound):
-        z[i, j] = np.random.randint(2)
-        if z[i, j]:
-            n[i, j] = np.random.randint(2)
-a = z + n
+#
+# from centre_of_mass import centre_of_mass
+# from positions import particle_positions
+#
+# dim = 20
+# bound = 2
+#
+# z = np.zeros((dim, dim))
+# n = np.zeros((dim, dim))
+# for i in range(bound, dim-bound):
+#     for j in range(bound, dim-bound):
+#         z[i, j] = np.random.randint(2)
+#         if z[i, j]:
+#             n[i, j] = np.random.randint(2)
+# a = z + n
 # print(a)
-
-dens = matrix(a)
-print(dens)
+#
+# dens = matrix(a)
+# print(dens)
 # plot(dens)
-
-pos = particle_positions(a)
-cm = centre_of_mass(a, pos)
-profile(dens, cm)
+#
+# cm = centre_of_mass(a, particle_positions(a))
+# profile(dens, cm)
