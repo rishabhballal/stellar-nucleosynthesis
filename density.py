@@ -29,15 +29,15 @@ def profile(dens, cm):
 
     maxim = max(cm) if len(dens)/2 < max(cm) else len(dens) - min(cm)
 
-    def normalise_length(arr, lim):
-        while len(arr) < lim:
+    def normalise_length(arr):
+        while len(arr) < maxim:
             arr = np.append(arr, 0)
         return arr
 
-    prof1 = normalise_length(prof1, maxim)
-    prof2 = normalise_length(prof2, maxim)
-    prof3 = normalise_length(prof3, maxim)
-    prof4 = normalise_length(prof4, maxim)
+    prof1 = normalise_length(prof1)
+    prof2 = normalise_length(prof2)
+    prof3 = normalise_length(prof3)
+    prof4 = normalise_length(prof4)
 
     prof = (prof1 + prof2 + prof3 + prof4)/4
 
