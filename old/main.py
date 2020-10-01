@@ -1,33 +1,7 @@
 import numpy as np
 import matplotlib.pyplot as plt
 from mpl_toolkits.mplot3d import axes3d
-
-from positions import particle_positions
-from centre_of_mass import centre_of_mass
-import density
 import nuclear as ncl
-
-mag = lambda vec: np.sqrt(np.inner(vec, vec))
-
-def gravity(a, ind):
-    grav = np.zeros(2)
-    for i in ind:
-        f = np.zeros(2)
-        for j in range(p):
-            for k in range(q):
-                if(i[0] != j and i[1] != k):
-                    pos1 = np.array([i[0], i[1]])
-                    pos2 = np.array([j, k])
-                    rvec = pos2 - pos1
-                    f += (a[i[0], i[1]]*a[j, k]
-                          *rvec/mag(rvec)**3)
-        grav = np.vstack((grav, f))
-    grav = grav[1:]
-    for i in grav:
-        norm = abs(i[0]) + abs(i[1])
-        i[0] /= norm
-        i[1] /= norm
-    return np.round(grav, 2)
 
 def core_param(a, ind, cm):
     dens = density(a)
