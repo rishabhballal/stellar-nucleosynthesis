@@ -1,6 +1,8 @@
+import numpy as np
+
 def generator():
-    dim = 5
-    bound = 1
+    dim = 20
+    bound = 2
 
     z = np.zeros((dim, dim))
     n = np.zeros((dim, dim))
@@ -10,7 +12,8 @@ def generator():
             if z[i, j]:
                 n[i, j] = np.random.randint(2)
     a = z + n
-    return a
+
+    return z, n, a
 
 def positions(a):
     pos = np.array([0, 0], dtype=int)
