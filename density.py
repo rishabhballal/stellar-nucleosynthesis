@@ -1,7 +1,3 @@
-import numpy as np
-import matplotlib.pyplot as plt
-from mpl_toolkits.mplot3d import axes3d
-
 def matrix(a):
     dens = 0*a
 
@@ -46,28 +42,3 @@ def profile(dens, cm):
     ax.plot(r, prof)
     ax.grid()
     plt.show()
-
-# TEST SECTION
-#
-# from centre_of_mass import centre_of_mass
-# from positions import particle_positions
-#
-# dim = 20
-# bound = 2
-#
-# z = np.zeros((dim, dim))
-# n = np.zeros((dim, dim))
-# for i in range(bound, dim-bound):
-#     for j in range(bound, dim-bound):
-#         z[i, j] = np.random.randint(2)
-#         if z[i, j]:
-#             n[i, j] = np.random.randint(2)
-# a = z + n
-# print(a)
-#
-# dens = matrix(a)
-# print(dens)
-# plot(dens)
-#
-# cm = centre_of_mass(a, particle_positions(a))
-# profile(dens, cm)
