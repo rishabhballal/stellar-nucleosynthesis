@@ -2,7 +2,7 @@ import numpy as np
 
 def generator():
     dim = 20
-    bound = 2
+    bound = dim//10
 
     z = np.zeros((dim, dim))
     n = np.zeros((dim, dim))
