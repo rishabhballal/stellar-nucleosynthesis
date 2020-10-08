@@ -30,7 +30,7 @@ def centre_of_mass(a, pos):
 
     for i in pos:
         cm += i*a[i[0], i[1]]
-    cm /= sum(sum(a))
+    cm /= a.sum()
     cm = np.round(cm)
 
     return np.array([cm[0], cm[1]], dtype=int)
