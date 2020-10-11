@@ -34,3 +34,13 @@ def centre_of_mass(a, pos):
     cm = np.round(cm)
 
     return np.array([cm[0], cm[1]], dtype=int)
+
+def core_temp(a, cm):
+    dim = 4
+    core = a[cm[0]-dim:cm[0]+dim+1, cm[1]-dim:cm[1]+dim+1]
+
+    dens = core.sum()/core.size
+    maxim = core.max()
+
+    t = 10*dens/maxim
+    return t
