@@ -3,33 +3,6 @@ import matplotlib.pyplot as plt
 from mpl_toolkits.mplot3d import axes3d
 import nuclear as ncl
 
-def core_param(a, ind, cm):
-    dens = density(a)
-
-    cdens = 0
-    for i in range(int(cm[0] - core), int(cm[0] + core + 1)):
-        for j in range(int(cm[1] - core), int(cm[1] + core + 1)):
-            cdens += dens[i, j]
-    cdens /= core_dim**2
-    print('core dens: %.4f' %cdens)
-
-    maxim = np.array([])
-    for i in range(p):
-        for j in range(q):
-            maxim = np.append(maxim, a[i, j])
-    maxim = sorted(maxim)
-    maxim = maxim[::-1]
-
-    mdens = 0
-    for i in range(int(core_dim**2)):
-        mdens += maxim[i]
-    mdens /= core_dim**2
-
-    ctemp = 9*(cdens/mdens)
-    print('core temp: 10^%.4f' %ctemp)
-
-    return cdens, ctemp
-
 def fusion(ind, cm, ctemp):
     r1 = np.arange(0, core, space*0.001)
     t1 = ctemp*np.ones(len(r1))
