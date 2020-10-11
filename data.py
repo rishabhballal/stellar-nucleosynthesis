@@ -1,6 +1,6 @@
 from numpy import array
 
-# [atomic number, mass number, mass]
+# data is in the form: [atomic number, mass number, mass]
 mass = array([[0, 1, 1.008665],
               [1, 1, 1.007825], [1, 2, 2.014102], [1, 3, 3.016050],
               [2, 3, 3.016030], [2, 4, 4.002603],
