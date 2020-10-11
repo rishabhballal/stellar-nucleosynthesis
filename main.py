@@ -5,7 +5,6 @@ from mpl_toolkits.mplot3d import axes3d
 import matrix
 import density
 import gravity
-import core
 
 z, n, a = matrix.generator()
 print('\nINITIAL ATOMIC MASS NUMBER MATRIX')
@@ -25,7 +24,7 @@ for t in range(1, time+1):
     pos = matrix.positions(a)
     cm = matrix.centre_of_mass(a, pos)
 
-    temp = core.temp(a, cm)
+    temp = matrix.core_temp(a, cm)
     if temp > 7:
         pass
 
