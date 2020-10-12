@@ -1,8 +1,7 @@
 import numpy as np
 
-def generator():
-    dim = 20
-    bound = dim//10
+def generate(dim):
+    bound = dim//10 if dim >= 10 else 1
 
     z = np.zeros((dim, dim))
     n = np.zeros((dim, dim))
@@ -11,8 +10,8 @@ def generator():
             z[i, j] = np.random.randint(2)
             if z[i, j]:
                 n[i, j] = np.random.randint(2)
-    a = z + n
 
+    a = z + n
     return z, n, a
 
 def positions(a):
@@ -36,11 +35,11 @@ def centre_of_mass(a, pos):
     return np.array([cm[0], cm[1]], dtype=int)
 
 def core_temp(a, cm):
-    dim = 4
+    dim = int(0.2*len(a))
     core = a[cm[0]-dim:cm[0]+dim+1, cm[1]-dim:cm[1]+dim+1]
 
     dens = core.sum()/core.size
     maxim = core.max()
 
-    t = 10*dens/maxim
-    return t
+    temp = 10*dens/maxim
+    return core, temp
