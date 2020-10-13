@@ -4,8 +4,11 @@ from data import mass
 # rewriting data as: [proton number, neutron number, mass]
 mass[:, 1] = mass[:, 1] - mass[:, 0]
 
-def reaction(p1, p2, e):
+def reaction(p1, p2, f, e):
     res = p1[0] + p1[1] + p2[0] + p2[1]
+
+    if not res:
+        return np.append([p1, p2], e)
 
     # obtaining masses of the reactants
     mr1, mr2 = 0, 0
@@ -22,7 +25,7 @@ def reaction(p1, p2, e):
             p = np.vstack((p, np.append(mass[i], np.zeros(3))))
             p = np.vstack((p, np.append(np.zeros(3), mass[i])))
         for j in range(len(mass)):
-            if mass[i, 0] + mass[j, 0] + mass[i, 1] + mass[j, 1] == res:
+            if mass[i, 0] + mass[i, 1] + mass[j, 0] + mass[j, 1] == res:
                 p = np.vstack((p, np.append(mass[i], mass[j])))
     p = p[1:]
 
@@ -49,12 +52,15 @@ def reaction(p1, p2, e):
     q = np.vstack((q, q))
     q[1] /= 0.01*norm
 
-    # determining the final reaction
-    rn = np.append([p1, p2], 0)
+    # coulomb repulsion factor
+    q *= f
+
+    # determining the final nuclear reaction
+    nr = np.append([p1, p2], 0)
     r = 100*np.random.rand(1)
     for i in range(len(p)):
         if r < sum(q[1, 0:i+1]):
-            rn = np.append(p[i], q[0, i])
+            nr = np.append(p[i], q[0, i])
             break
 
-    return rn
+    return nr
