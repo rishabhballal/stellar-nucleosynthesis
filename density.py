@@ -44,6 +44,6 @@ def profile(dens, cm):
 
     r = np.arange(maxim)
     fig, ax = plt.subplots(figsize=(8, 6))
-    ax.plot(r, prof)
+    ax.scatter(r, prof)
     ax.grid()
     plt.show()
