@@ -24,3 +24,9 @@ def composition(z, pos):
                 comp[i, 1], comp[j, 1] = comp[j, 1], comp[i, 1]
 
     return np.round(comp, 2)
+
+def log(comp, type):
+    with open('log.txt', type) as f:
+        for i in comp:
+            f.write('{}: {}\n'.format(i[0], i[1]))
+        f.write('\n')
