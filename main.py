@@ -23,9 +23,11 @@ pos = matrix.positions(a)
 cm = matrix.centre_of_mass(a, pos)
 
 dens = density.matrix(a)
-density.plot(dens)
+density.plot(dens, 'initial')
 
 en = 0*a
+
+data.log(data.composition(z, pos), 'w')
 
 flag1 = 0
 time = 20
@@ -90,11 +92,13 @@ for t in range(time):
                 n[j, k], n[j, k+dir] = n[j, k+dir], n[j, k]
         a = z + n
 
+    data.log(data.composition(z, pos), 'a')
+
 print(a)
 
 pos = matrix.positions(a)
 cm = matrix.centre_of_mass(a, pos)
 
 dens = density.matrix(a)
-density.plot(dens)
+density.plot(dens, 'final')
 density.profile(dens, cm)
