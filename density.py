@@ -12,7 +12,7 @@ def matrix(a):
 
     return dens
 
-def plot(dens):
+def plot(dens, str):
     u = v = np.arange(0, len(dens), dtype=float)
     x, y = np.meshgrid(u, v)
 
@@ -20,6 +20,8 @@ def plot(dens):
     ax = fig.add_subplot(111, projection='3d')
     ax.plot_surface(x, y, dens)
     ax.set_zlim(0, )
+    fname = str + '_density_plot'
+    plt.savefig('images/' + fname + '.jpg')
     plt.show()
 
 def profile(dens, cm):
@@ -45,5 +47,8 @@ def profile(dens, cm):
     r = np.arange(maxim)
     fig, ax = plt.subplots(figsize=(8, 6))
     ax.scatter(r, prof)
+    ax.set_xlabel('Radial distance')
+    ax.set_ylabel('Density')
     ax.grid()
+    plt.savefig('images/density_profile.jpg')
     plt.show()
