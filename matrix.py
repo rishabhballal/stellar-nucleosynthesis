@@ -41,9 +41,9 @@ def core(a, pos, cm):
 
     c_pos = np.zeros(2, dtype=int)
     for i in pos:
-            r = mag(i - cm)
-            if r <= c_dim:
-                c_pos = np.vstack((c_pos, i))
+        r = mag(i - cm)
+        if r <= c_dim:
+            c_pos = np.vstack((c_pos, i))
 
     c_a = []
     for i, j in c_pos:
