@@ -6,6 +6,7 @@ import matrix
 import density
 import gravity
 import nuclear
+import data
 
 np.seterr(all='ignore')
 
@@ -13,15 +14,13 @@ np.seterr(all='ignore')
 dim = 20
 
 z, n, a = matrix.generate(dim)
-print('\nINITIAL ATOMIC MASS NUMBER MATRIX')
 print(a)
 
 m = a.sum()
-print('\nMASS: ', m)
+print('\nMass: ', m)
 
 pos = matrix.positions(a)
 cm = matrix.centre_of_mass(a, pos)
-print('\nCENTRE OF MASS: ', cm)
 
 dens = density.matrix(a)
 density.plot(dens)
@@ -30,13 +29,13 @@ en = 0*a
 
 flag1 = 0
 time = 20
-print('\nITERATIONS')
+print('\nIterations:')
 for t in range(time):
     print(t+1)
 
     pos = matrix.positions(a)
     cm = matrix.centre_of_mass(a, pos)
-    c_pos, c_temp = matrix.core(a, cm)
+    c_pos, c_temp = matrix.core(a, pos, cm)
 
     if not flag1:
         if c_temp > 7:
@@ -91,7 +90,6 @@ for t in range(time):
                 n[j, k], n[j, k+dir] = n[j, k+dir], n[j, k]
         a = z + n
 
-print('\nFINAL ATOMIC MASS NUMBER MATRIX')
 print(a)
 
 pos = matrix.positions(a)
