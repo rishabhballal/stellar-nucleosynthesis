@@ -22,7 +22,6 @@ def plot(dens, str):
     ax.set_zlim(0, )
     fname = str + '_density_plot'
     plt.savefig('images/' + fname + '.jpg')
-    plt.show()
 
 def profile(dens, cm):
     prof1 = dens[cm[0], cm[1]:len(dens)]
@@ -51,4 +50,3 @@ def profile(dens, cm):
     ax.set_ylabel('Density')
     ax.grid()
     plt.savefig('images/density_profile.jpg')
-    plt.show()
