@@ -36,19 +36,18 @@ def centre_of_mass(a, pos):
 
 mag = lambda vec: np.sqrt(np.inner(vec, vec))
 
-def core(a, cm):
-    dim = int(0.2*len(a)) if len(a) >= 10 else 1
+def core(a, pos, cm):
+    c_dim = int(0.2*len(a)) if len(a) >= 10 else 1
 
     c_pos = np.zeros(2, dtype=int)
-    for i in range(len(a)):
-        for j in range(len(a)):
-            r = mag([i, j] - cm)
-            if r <= dim:
-                c_pos = np.vstack((c_pos, [i, j]))
+    for i in pos:
+            r = mag(i - cm)
+            if r <= c_dim:
+                c_pos = np.vstack((c_pos, i))
 
     c_a = []
-    for i in c_pos:
-        c_a.append(a[i[0], i[1]])
+    for i, j in c_pos:
+        c_a.append(a[i, j])
 
     c_dens = sum(c_a)/len(c_a)
     c_temp = 10 * c_dens/max(c_a)
