@@ -1,5 +1,5 @@
 import numpy as np
-from data import mass
+from elements import mass
 
 # rewriting data as: [proton number, neutron number, mass]
 mass[:, 1] = mass[:, 1] - mass[:, 0]
