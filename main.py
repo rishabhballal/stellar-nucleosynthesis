@@ -14,7 +14,6 @@ np.seterr(all='ignore')
 dim = 20
 
 z, n, a = matrix.generate(dim)
-print(a)
 
 m = a.sum()
 print('\nMass: ', m)
@@ -27,9 +26,9 @@ density.plot(dens, 'initial')
 
 en = 0*a
 
-data.log(data.composition(z, pos), 'w')
+data.log(data.composition(z, pos), 'w', 0)
 
-flag1 = 0
+flag2 = 0
 time = 20
 print('\nIterations:')
 for t in range(time):
@@ -39,9 +38,9 @@ for t in range(time):
     cm = matrix.centre_of_mass(a, pos)
     c_pos, c_temp = matrix.core(a, pos, cm)
 
-    if not flag1:
+    if not flag2:
         if c_temp > 7:
-            flag1 = 1
+            flag2 = 1
     else:
         for i in c_pos:
             j = i.copy()
@@ -76,6 +75,8 @@ for t in range(time):
     pos = matrix.positions(a)
     grav = gravity.force(a, pos)
 
+    data.log(data.composition(z, pos), 'a', t+1)
+
     for i in range(len(grav)):
         r = np.random.rand(1)
         j, k = pos[i]
@@ -91,10 +92,6 @@ for t in range(time):
                 z[j, k], z[j, k+dir] = z[j, k+dir], z[j, k]
                 n[j, k], n[j, k+dir] = n[j, k+dir], n[j, k]
         a = z + n
-
-    data.log(data.composition(z, pos), 'a')
-
-print(a)
 
 pos = matrix.positions(a)
 cm = matrix.centre_of_mass(a, pos)
