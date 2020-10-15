@@ -3,8 +3,8 @@ import numpy as np
 def generate(dim):
     bound = dim//10 if dim >= 10 else 1
 
-    z = np.zeros((dim, dim))
-    n = np.zeros((dim, dim))
+    z = np.zeros((dim, dim), dtype=int)
+    n = np.zeros((dim, dim), dtype=int)
     for i in range(bound, dim-bound):
         for j in range(bound, dim-bound):
             z[i, j] = np.random.randint(2)
