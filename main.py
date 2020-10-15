@@ -1,19 +1,18 @@
 import numpy as np
-import matplotlib.pyplot as plt
-from mpl_toolkits.mplot3d import axes3d
-
 import matrix
 import density
 import gravity
 import nuclear
 import data
 
-np.seterr(all='ignore')
+np.seterr(divide='ignore')
 
 # minimum = 10
 dim = 20
 
 z, n, a = matrix.generate(dim)
+en = 0*a
+elm = np.array([['Hydrogen', 'Helium', 'Carbon', 'Nitrogen', 'Oxygen'], [1, 2, 6, 7, 8]])
 
 m = a.sum()
 print('\nMass: ', m)
@@ -24,11 +23,10 @@ cm = matrix.centre_of_mass(a, pos)
 dens = density.matrix(a)
 density.plot(dens, 'initial')
 
-en = 0*a
+comp = data.composition(z, pos)
+data.log(comp, 'w', 0)
 
-data.log(data.composition(z, pos), 'w', 0)
-
-flag2 = 0
+flag2 = False
 time = 20
 print('\nIterations:')
 for t in range(time):
@@ -40,7 +38,7 @@ for t in range(time):
 
     if not flag2:
         if c_temp > 7:
-            flag2 = 1
+            flag2 = True
     else:
         for i in c_pos:
             j = i.copy()
@@ -73,9 +71,8 @@ for t in range(time):
             en[i[0], i[1]] = nr[4]
 
     pos = matrix.positions(a)
-    grav = gravity.force(a, pos)
-
     data.log(data.composition(z, pos), 'a', t+1)
+    grav = gravity.force(a, pos)
 
     for i in range(len(grav)):
         r = np.random.rand(1)
