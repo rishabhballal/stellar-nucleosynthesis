@@ -31,8 +31,6 @@ def composition(z, pos):
 
 def log(comp, type, iter):
     with open('log.txt', type) as file:
-        if type == 'w':
-            file.truncate(0)
         file.write('iteration %d\n' %iter)
         for i in comp:
             file.write('%d: %.2f, %.2f\n' %(i[0], i[1], i[2]))
