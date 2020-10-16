@@ -2,15 +2,15 @@ import numpy as np
 import matplotlib.pyplot as plt
 from mpl_toolkits.mplot3d import axes3d
 
-def matrix(a):
-    dens = 0*a
 
+def matrix(a):
+    dens = np.zeros((len(a), len(a)))
     for i in range(1, len(a)-1):
         for j in range(1, len(a)-1):
             d = a[i-1:i+2, j-1:j+2]
             dens[i, j] = round(d.sum()/d.size, 2)
-
     return dens
+
 
 def plot(dens, str):
     u = v = np.arange(0, len(dens), dtype=float)
@@ -23,12 +23,12 @@ def plot(dens, str):
     fname = str + '_density_plot'
     plt.savefig('images/' + fname + '.jpg')
 
+
 def profile(dens, cm):
     prof1 = dens[cm[0], cm[1]:len(dens)]
     prof2 = dens[cm[0]:len(dens), cm[1]]
     prof3 = dens[cm[0], cm[1]:0:-1]
     prof4 = dens[cm[0]:0:-1, cm[1]]
-
     maxim = max(cm) if len(dens)/2 < max(cm) else len(dens) - min(cm)
 
     def normalise_length(arr):
@@ -40,7 +40,6 @@ def profile(dens, cm):
     prof2 = normalise_length(prof2)
     prof3 = normalise_length(prof3)
     prof4 = normalise_length(prof4)
-
     prof = (prof1 + prof2 + prof3 + prof4)/4
 
     r = np.arange(maxim)
