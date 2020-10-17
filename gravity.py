@@ -1,8 +1,14 @@
 import numpy as np
 
-mag = lambda vec: np.sqrt(np.inner(vec, vec))
 
 def force(a, pos):
+    '''Computes the gravitational force acting on each element of the
+    matrix and returns it as normalised directional probabilities.
+    '''
+
+    # returns the magnitude of a vector
+    def mag(vec): return np.sqrt(np.inner(vec, vec))
+
     grav = np.array([0, 0], dtype=float)
 
     for i in pos:
@@ -10,7 +16,7 @@ def force(a, pos):
         for j in pos:
             rvec = j - i
             if rvec.any():
-                f += a[i[0], i[1]]*a[j[0], j[1]]*rvec/mag(rvec)
+                f += a[i[0], i[1]] * a[j[0], j[1]] * rvec/mag(rvec)
         grav = np.vstack((grav, f))
     grav = grav[1:]
 

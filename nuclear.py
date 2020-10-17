@@ -1,10 +1,16 @@
 import numpy as np
 from elements import mass
 
-# rewriting data as: [proton number, neutron number, mass]
+# rewriting as: [proton number, neutron number, mass]
 mass[:, 1] = mass[:, 1] - mass[:, 0]
 
+
 def reaction(p1, p2, f, e):
+    '''Identifies all possible nuclear reactions between a pair of
+    reactant elements. Selection is randomised under weighted
+    probabilities. Returns the product elements.
+    '''
+
     res = p1[0] + p1[1] + p2[0] + p2[1]
 
     if not res:
