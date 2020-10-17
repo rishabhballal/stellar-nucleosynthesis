@@ -5,12 +5,12 @@ import gravity
 import nuclear
 import data
 
-# ignores runtime warning for ZeroDivisionError, as error is already handled
+# ignores runtime warning for handled ZeroDivisionError
 np.seterr(divide='ignore')
 
 # matrix side length; minimum = 10
 dim = 20
-# proton number, neutron number, atomic number matrices
+# proton number, neutron number, mass number matrices
 z, n, a = matrix.generate(dim)
 # energy matrix
 en = np.zeros((len(a), len(a)))
@@ -113,9 +113,9 @@ while flag1:
     elm = np.vstack((elm, stack))
     data.log(comp, 'a', iter)
 
-    # iterates till H + He concentration drops below 5%
-    print('Hydrogen + Helium: %.2f\n' %(stack[0] + stack[1]))
-    if stack[0] + stack[1] < 5:
+    # iterates till H + He (stellar fuel) drops below 1.00%
+    print('Fuel: %.2f%%\n' %(stack[0] + stack[1]))
+    if stack[0] + stack[1] < 1:
         flag1 = False
 
 # final system
