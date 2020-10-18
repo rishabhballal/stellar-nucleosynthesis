@@ -51,4 +51,4 @@ def plot(elm, iter):
     ax.set_ylabel('Percentage by mass')
     ax.grid()
     ax.legend()
-    plt.savefig('images/data_plot.jpg')
+    plt.savefig('images/composition.jpg')

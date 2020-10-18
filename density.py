@@ -24,7 +24,7 @@ def plot(dens, str):
     ax = fig.add_subplot(111, projection='3d')
     ax.plot_surface(x, y, dens)
     ax.set_zlim(0,)
-    fname = str + '_density_plot'
+    fname = str + '_density'
     plt.savefig('images/' + fname + '.jpg')
 
 
