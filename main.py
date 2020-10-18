@@ -8,7 +8,7 @@ import data
 def evolution():
     '''A star is initialised in the form of proton number, neutron
     number, and mass number matrices. Every iteration utilises weighted
-    probabilities in randomising the movement of nuclei under gravity,
+    probabilities in randomising the movement of elements under gravity,
     as well as in determining the nuclear fusion reactions that occur.
 
     The matrix dimensions may be modified under the variable 'dim'.
@@ -17,7 +17,7 @@ def evolution():
     # ignores runtime warning for handled ZeroDivisionError
     np.seterr(divide='ignore')
 
-    # matrix side length; minimum = 10
+    # square matrix dimensions; minimum = 10
     dim = 20
 
     # proton number, neutron number, mass number matrices
@@ -59,7 +59,7 @@ def evolution():
         iter += 1
         print(iter, end='. ')
 
-        # gravitational attraction
+        # gravitation
         pos = matrix.positions(a)
         grav = gravity.force(a, pos)
         for i in range(len(grav)):
@@ -133,7 +133,7 @@ def evolution():
         # iterates till H + He (stellar fuel) drops below 5.00%
         fuel = stack[0] + stack[1]
         print('Fuel: %.2f%%\n' %fuel)
-        if fuel < 90:
+        if fuel < 5:
             flag1 = False
 
     # final system
