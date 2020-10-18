@@ -1,4 +1,5 @@
 import numpy as np
+import matplotlib.pyplot as plt
 from elements import mass
 
 # rewriting as: [proton number, neutron number, mass]
@@ -70,3 +71,14 @@ def reaction(p1, p2, f, e):
             break
 
     return nr
+
+
+def plot_rate(rate, iter):
+    '''Plots the rate of nuclear reactions occuring in the core.'''
+
+    fig, ax = plt.subplots()
+    ax.plot(range(iter), rate)
+    ax.set_xlabel('Iterations')
+    ax.set_ylabel('Number of nuclear reactions')
+    ax.grid()
+    plt.savefig('images/fusion_rate.jpg')
