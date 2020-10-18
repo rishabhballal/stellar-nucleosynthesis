@@ -2,13 +2,13 @@ import numpy as np
 
 
 def generate(dim):
-    '''Returns three random (dim x dim) matrices:
+    '''Returns three (dim x dim) matrices:
     z - proton number matrix
     n - neutron number matrix
     a - mass number matrix = z + n
 
-    The only condition imposed on the randomisation is to generate
-    only Hydrogen and Deuterium in the initial state of the star.
+    The only condition imposed on their randomisation is to generate
+    Hydrogen and Deuterium in the initial state of the star.
     '''
 
     bound = dim//10 if dim >= 10 else 1
