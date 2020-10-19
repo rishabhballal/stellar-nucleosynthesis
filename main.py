@@ -1,3 +1,4 @@
+import os
 import numpy as np
 import matrix
 import density
@@ -32,6 +33,10 @@ def evolution():
     # total atomic mass
     print('\nMass: %d' %a.sum())
 
+    # output images directory
+    if not os.path.exists('images'):
+        os.mkdir('images')
+
     # initial system
     pos = matrix.positions(a)
     cm = matrix.centre_of_mass(a, pos)
@@ -62,6 +67,7 @@ def evolution():
         # gravitation
         pos = matrix.positions(a)
         grav = gravity.force(a, pos)
+        grav *= 1 - 0.99*en.sum()
         for i in range(len(grav)):
             r = np.random.rand(1)
             j, k = pos[i]
@@ -71,7 +77,7 @@ def evolution():
                 if a[j+dir, k] < a[j, k]:
                     z[j, k], z[j+dir, k] = z[j+dir, k], z[j, k]
                     n[j, k], n[j+dir, k] = n[j+dir, k], n[j, k]
-            else:
+            elif r <= np.abs(grav[i]).sum():
                 dir = int(grav[i, 1]/abs(grav[i, 1]))
                 if a[j, k+dir] < a[j, k]:
                     z[j, k], z[j, k+dir] = z[j, k+dir], z[j, k]
