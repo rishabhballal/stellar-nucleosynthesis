@@ -43,8 +43,8 @@ def reaction(p1, p2, f, e):
 
     p = np.delete(p, [2, 5], 1)
 
-    # one percent of the energy is radiated out
-    q += 0.99*e
+    # one percent of the energy enhances the reactions
+    q += 0.01*e
 
     # including only positive q value reactions
     ind = []
